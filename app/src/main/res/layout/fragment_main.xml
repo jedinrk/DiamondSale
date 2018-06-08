@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/header"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        android:weightSum="6">
+
+        <TextView
+            android:id="@+id/productId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ID"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/carat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Carat"
+            android:textStyle="bold"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/clarity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Clarity"
+            android:textStyle="bold"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/color"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Color"
+            android:textStyle="bold"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/cut"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cut"
+            android:textStyle="bold"
+            android:layout_weight="1"/>
+
+
+        <TextView
+            android:id="@+id/price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Price"
+            android:textStyle="bold"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/header"
+        android:background="#000000"/>
+
+    <RelativeLayout
+        android:id="@+id/progressBar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/view"
+        android:visibility="visible">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"/>
+
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/diamondList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/view"/>
+
+</RelativeLayout>
