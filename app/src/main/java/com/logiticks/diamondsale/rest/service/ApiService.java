@@ -1,5 +1,6 @@
 package com.logiticks.diamondsale.rest.service;
 
+import com.logiticks.diamondsale.rest.model.CustomerModelClass;
 import com.logiticks.diamondsale.rest.model.DiamondModelClass;
 
 import java.util.List;
@@ -19,7 +20,12 @@ public interface ApiService {
     @GET("/api/Diamond")
     Call<List<DiamondModelClass>> getDiamondList();
 
-
     @POST("/api/Diamond")
     Call<DiamondModelClass> createDiamond(@Body DiamondModelClass diamond);
+
+    @GET("/api/Customer")
+    Call<List<CustomerModelClass>> getCustomer();
+
+    @POST("/api/Customer")
+    Call<CustomerModelClass> createCustomer(@Body CustomerModelClass customer);
 }

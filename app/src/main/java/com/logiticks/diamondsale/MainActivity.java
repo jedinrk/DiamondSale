@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.logiticks.diamondsale.Fragment.FragmentCustomer;
 import com.logiticks.diamondsale.Fragment.FragmentDiamonds;
 
 public class MainActivity extends AppCompatActivity
@@ -24,7 +25,7 @@ public class MainActivity extends AppCompatActivity
 
     private Handler mHandler;
     private DrawerLayout drawer;
-
+    private Fragment fragment = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +40,13 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,CreateDiamondActivity.class);
-                startActivityForResult(intent,0);
+                if(fragment != null && fragment.getTag().equals("fragDiamonds")) {
+                    Intent intent = new Intent(MainActivity.this, CreateDiamondActivity.class);
+                    startActivityForResult(intent, 0);
+                }else {
+                    Intent intent = new Intent(MainActivity.this, CreateCustomerActivity.class);
+                    startActivityForResult(intent, 1);
+                }
             }
         });
 
@@ -85,7 +91,7 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
 
-        Fragment fragment = null;
+
         String tag = "";
         int id = item.getItemId();
 
@@ -94,6 +100,8 @@ public class MainActivity extends AppCompatActivity
             tag = "fragDiamonds";
             // Handle the camera action
         } else if (id == R.id.nav_customer) {
+            fragment = FragmentCustomer.newInstance();
+            tag = "fragCustomer";
 
         } else if (id == R.id.nav_order) {
 
@@ -109,7 +117,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void run() {
                 // update the main content by replacing fragments
-                Fragment fragment = mFragment;
+                fragment = mFragment;
                 FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.setCustomAnimations(android.R.anim.fade_in,
                         android.R.anim.fade_out);
@@ -119,9 +127,7 @@ public class MainActivity extends AppCompatActivity
         };
 
         // If mPendingRunnable is not null, then add to the message queue
-        if (mPendingRunnable != null) {
-            mHandler.post(mPendingRunnable);
-        }
+        mHandler.post(mPendingRunnable);
 
         // show or hide the fab button
         //toggleFab();
@@ -140,6 +146,8 @@ public class MainActivity extends AppCompatActivity
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode==0){
             loadHomeFragment(FragmentDiamonds.newInstance(),"fragDiamonds");
+        }else {
+            loadHomeFragment(FragmentCustomer.newInstance(),"fragCustomer");
         }
 
     }

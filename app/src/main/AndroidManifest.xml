@@ -25,10 +25,13 @@
         </activity>
         <activity
             android:name=".CreateDiamondActivity"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:label="@string/create_diamond"
+            android:theme="@style/AppTheme.NoActionBar"/>
 
-        </activity>
+        <activity android:name=".CreateCustomerActivity"
+            android:label="@string/create_customer"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
     </application>
 
 </manifest>
