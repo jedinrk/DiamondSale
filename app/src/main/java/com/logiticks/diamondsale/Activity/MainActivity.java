@@ -19,6 +19,7 @@ import android.view.MenuItem;
 import com.logiticks.diamondsale.Fragment.FragmentCustomer;
 import com.logiticks.diamondsale.Fragment.FragmentDiamonds;
 import com.logiticks.diamondsale.Fragment.FragmentInvoices;
+import com.logiticks.diamondsale.Fragment.FragmentTransactions;
 import com.logiticks.diamondsale.R;
 
 public class MainActivity extends AppCompatActivity
@@ -110,6 +111,8 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_order) {
             fragment = FragmentInvoices.newInstance();
             tag = "fragInvoice";
+        } else if(id == R.id.nav_trans){
+            fragment = FragmentTransactions.newInstance();
         }
 
         loadHomeFragment(fragment,tag);

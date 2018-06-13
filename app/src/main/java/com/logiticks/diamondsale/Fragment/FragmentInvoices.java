@@ -63,6 +63,7 @@ public class FragmentInvoices extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         mRootView = inflater.inflate(R.layout.fragment_invoices, container, false);
+        getActivity().setTitle("Invoices");
 
         progressBar = mRootView.findViewById(R.id.progressBar);
         ListView invoiceList = mRootView.findViewById(R.id.invoiceList);

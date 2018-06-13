@@ -5,6 +5,7 @@ import com.logiticks.diamondsale.rest.model.DiamondModelClass;
 import com.logiticks.diamondsale.rest.model.MerchantModelClass;
 import com.logiticks.diamondsale.rest.model.OrderModelClass;
 import com.logiticks.diamondsale.rest.model.PlaceOrderModelClass;
+import com.logiticks.diamondsale.rest.model.TransactionModelClass;
 
 import java.util.List;
 
@@ -40,5 +41,8 @@ public interface ApiService {
 
     @GET("/api/Merchant")
     Call<List<MerchantModelClass>> getMerchants();
+
+    @GET("/api/system/historian")
+    Call<List<TransactionModelClass>> getTransactions();
 
 }

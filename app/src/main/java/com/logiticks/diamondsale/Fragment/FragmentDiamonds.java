@@ -55,6 +55,7 @@ public class FragmentDiamonds extends Fragment {
                              Bundle savedInstanceState) {
         mRootView = inflater.inflate(R.layout.fragment_main, container, false);
 
+        getActivity().setTitle("Diamonds");
 
         progressBar = mRootView.findViewById(R.id.progressBar);
         ListView diamondList = mRootView.findViewById(R.id.diamondList);

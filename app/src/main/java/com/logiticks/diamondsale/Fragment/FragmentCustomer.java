@@ -56,6 +56,7 @@ public class FragmentCustomer extends Fragment {
 
         mRootView = inflater.inflate(R.layout.fragment_customer, container, false);
 
+        getActivity().setTitle("Customers");
         progressBar = mRootView.findViewById(R.id.progressBar);
         ListView customerList = mRootView.findViewById(R.id.customerList);
 
