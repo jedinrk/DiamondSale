@@ -110,7 +110,7 @@ public class FragmentCustomer extends Fragment {
                 v = LayoutInflater.from(ctx).inflate(R.layout.customer_list_item, null);
 
                 TextView customerId = v.findViewById(R.id.customerId);
-                customerId.setText(String.valueOf(i));
+                customerId.setText(mCustomerList.get(i).getCustomerId());
 
                 TextView customerName = v.findViewById(R.id.customerName);
                 customerName.setText(mCustomerList.get(i).getName());

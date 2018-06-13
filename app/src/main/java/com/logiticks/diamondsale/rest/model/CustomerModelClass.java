@@ -12,15 +12,24 @@ public class CustomerModelClass {
     @SerializedName("$class")
     @Expose
     private String $class;
-    @SerializedName("email")
+    @SerializedName("customerId")
     @Expose
-    private String email;
+    private String customerId;
     @SerializedName("name")
     @Expose
     private String name;
-    @SerializedName("contactDetails")
+    @SerializedName("email")
     @Expose
-    private ContactDetails contactDetails;
+    private String email;
+    @SerializedName("phone")
+    @Expose
+    private String phone;
+    @SerializedName("state")
+    @Expose
+    private String state;
+    @SerializedName("address")
+    @Expose
+    private String address;
 
     public String get$class() {
         return $class;
@@ -30,12 +39,12 @@ public class CustomerModelClass {
         this.$class = $class;
     }
 
-    public String getEmail() {
-        return email;
+    public String getCustomerId() {
+        return customerId;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setCustomerId(String customerId) {
+        this.customerId = customerId;
     }
 
     public String getName() {
@@ -46,12 +55,37 @@ public class CustomerModelClass {
         this.name = name;
     }
 
-    public ContactDetails getContactDetails() {
-        return contactDetails;
+    public String getEmail() {
+        return email;
     }
 
-    public void setContactDetails(ContactDetails contactDetails) {
-        this.contactDetails = contactDetails;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
 }
+

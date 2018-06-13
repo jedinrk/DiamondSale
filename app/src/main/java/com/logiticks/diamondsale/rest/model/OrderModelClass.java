@@ -15,21 +15,21 @@ public class OrderModelClass {
     @SerializedName("orderId")
     @Expose
     private String orderId;
-    @SerializedName("diamondDetails")
-    @Expose
-    private DiamondDetails diamondDetails;
     @SerializedName("amount")
     @Expose
-    private Integer amount;
+    private Double amount;
     @SerializedName("orderStatus")
     @Expose
     private String orderStatus;
-    /*@SerializedName("merchant")
+    @SerializedName("diamond")
     @Expose
-    private Merchant merchant;
-    @SerializedName("orderer")
+    private DiamondModelClass diamond;
+    @SerializedName("merchant")
     @Expose
-    private Orderer orderer;*/
+    private MerchantModelClass merchant;
+    @SerializedName("buyer")
+    @Expose
+    private CustomerModelClass buyer;
 
     public String get$class() {
         return $class;
@@ -47,19 +47,11 @@ public class OrderModelClass {
         this.orderId = orderId;
     }
 
-    public DiamondDetails getDiamondDetails() {
-        return diamondDetails;
-    }
-
-    public void setDiamondDetails(DiamondDetails diamondDetails) {
-        this.diamondDetails = diamondDetails;
-    }
-
-    public Integer getAmount() {
+    public Double getAmount() {
         return amount;
     }
 
-    public void setAmount(Integer amount) {
+    public void setAmount(Double amount) {
         this.amount = amount;
     }
 
@@ -71,20 +63,28 @@ public class OrderModelClass {
         this.orderStatus = orderStatus;
     }
 
-    /*public Merchant getMerchant() {
+    public DiamondModelClass getDiamond() {
+        return diamond;
+    }
+
+    public void setDiamond(DiamondModelClass diamond) {
+        this.diamond = diamond;
+    }
+
+    public MerchantModelClass getMerchant() {
         return merchant;
     }
 
-    public void setMerchant(Merchant merchant) {
+    public void setMerchant(MerchantModelClass merchant) {
         this.merchant = merchant;
     }
 
-    public Orderer getOrderer() {
-        return orderer;
+    public CustomerModelClass getBuyer() {
+        return buyer;
     }
 
-    public void setOrderer(Orderer orderer) {
-        this.orderer = orderer;
-    }*/
+    public void setBuyer(CustomerModelClass buyer) {
+        this.buyer = buyer;
+    }
 
 }

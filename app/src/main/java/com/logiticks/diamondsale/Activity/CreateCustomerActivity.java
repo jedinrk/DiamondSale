@@ -1,4 +1,4 @@
-package com.logiticks.diamondsale;
+package com.logiticks.diamondsale.Activity;
 
 import android.os.Bundle;
 import android.os.PersistableBundle;
@@ -10,7 +10,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.logiticks.diamondsale.R;
 import com.logiticks.diamondsale.rest.model.CustomerModelClass;
+
+import java.util.Random;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -24,7 +27,7 @@ import static com.logiticks.diamondsale.DiamondApp.getRestClient;
 
 public class CreateCustomerActivity extends AppCompatActivity {
 
-    EditText customerName,customerEmail;
+    EditText customerName,customerEmail,customerPhone,customerAddress;
 
     CustomerModelClass customer;
     @Override
@@ -38,6 +41,8 @@ public class CreateCustomerActivity extends AppCompatActivity {
 
         customerName = (EditText) findViewById(R.id.editTextCustomerName);
         customerEmail = (EditText) findViewById(R.id.editTextCustomerEmail);
+        customerPhone = (EditText) findViewById(R.id.editTextCustomerPhone);
+        customerAddress = (EditText) findViewById(R.id.editTextCustomerAddress);
 
         customer = new CustomerModelClass();
 
@@ -45,9 +50,13 @@ public class CreateCustomerActivity extends AppCompatActivity {
         buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                customer.set$class("com.logiticks.diamond.lifecycle.Customer");
+                customer.set$class("com.logiticks.diamond.lifecycle.merchant.Customer");
+                customer.setCustomerId("c"+String.valueOf((int)(Math.random()*((1001)))));
                 customer.setName(customerName.getText().toString());
                 customer.setEmail(customerEmail.getText().toString());
+                customer.setPhone(customerPhone.getText().toString());
+                customer.setState("Kerala");
+                customer.setAddress(customerAddress.getText().toString());
 
                 Call<CustomerModelClass> createDiamond = getRestClient().getApiService().createCustomer(customer);
                 createDiamond.enqueue(new Callback<CustomerModelClass>() {
