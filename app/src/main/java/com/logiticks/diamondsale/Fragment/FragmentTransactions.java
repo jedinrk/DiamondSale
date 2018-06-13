@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.logiticks.diamondsale.R;
@@ -30,6 +31,7 @@ public class FragmentTransactions extends Fragment {
 
     View mRootView;
     List<TransactionModelClass> transList;
+    private RelativeLayout progressBar;
 
     public FragmentTransactions(){
 
@@ -51,6 +53,10 @@ public class FragmentTransactions extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         mRootView = inflater.inflate(R.layout.fragment_transaction, container, false);
+
+        progressBar = mRootView.findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.VISIBLE);
+
         getActivity().setTitle("Transactions");
 
         ListView transactionList = mRootView.findViewById(R.id.transactionList);
@@ -63,6 +69,9 @@ public class FragmentTransactions extends Fragment {
 
                 transList = response.body();
                 mTransListAdapter.notifyDataSetChanged();
+
+                progressBar.setVisibility(View.GONE);
+
             }
 
             @Override
