@@ -2,9 +2,11 @@ package com.logiticks.diamondsale.Fragment;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.ColorFilter;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -117,7 +119,7 @@ public class FragmentDiamonds extends Fragment {
                 productId.setText(mDiamondList.get(i).getProductID());
 
                 TextView carat = v.findViewById(R.id.carat);
-                carat.setText(mDiamondList.get(i).getDiamondDetails().getCarat().toString());
+                carat.setText(mDiamondList.get(i).getDiamondDetails().getCarat().toString() +" c/w");
 
                 TextView color = v.findViewById(R.id.color);
                 color.setText(mDiamondList.get(i).getDiamondDetails().getColor());
@@ -128,10 +130,8 @@ public class FragmentDiamonds extends Fragment {
                 TextView cut = v.findViewById(R.id.cut);
                 cut.setText(mDiamondList.get(i).getDiamondDetails().getCut());
 
-                Drawable drawable = getResources().getDrawable(R.drawable.diamon_color_bg);
-                drawable.setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.MULTIPLY);
-
-                color.setBackgroundDrawable(drawable);
+                GradientDrawable bgShape = (GradientDrawable)color.getBackground();
+                bgShape.setColor(getResources().getColor(R.color.colorAccent));
 
                 TextView price = v.findViewById(R.id.price);
                 price.setText("$ 40");
