@@ -23,15 +23,17 @@ public class PlaceOrderModelClass {
     @SerializedName("buyer")
     @Expose
     private String buyer;
-    @SerializedName("transactionId")
-    @Expose
-    private String transactionId;
+
     @SerializedName("timestamp")
     @Expose
     private String timestamp;
     @SerializedName("amount")
     @Expose
     private Double amount;
+
+    /*@SerializedName("transactionId")
+    @Expose
+    private String transactionId;*/
 
     /*public String get$class() {
         return $class;

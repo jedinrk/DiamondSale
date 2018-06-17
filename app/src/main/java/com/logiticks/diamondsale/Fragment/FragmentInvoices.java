@@ -152,11 +152,9 @@ public class FragmentInvoices extends Fragment {
                 TextView productId = v.findViewById(R.id.productId);
                 productId.setText(mInvoiceList.get(i).getDiamond().substring(46));
 
-                /*TextView carat = v.findViewById(R.id.carat);
-                carat.setText(String.valueOf(mInvoiceList.get(i).getDiamond().getDiamondDetails()));
+                TextView invoiceId = v.findViewById(R.id.invoiceId);
+                invoiceId.setText(mInvoiceList.get(i).getOrderId());
 
-                TextView cut = v.findViewById(R.id.cut);
-                cut.setText(mInvoiceList.get(i).getDiamond().getDiamondDetails().getCut());*/
 
                 TextView customer = v.findViewById(R.id.customer);
                 customer.setText(mInvoiceList.get(i).getBuyer().substring(58));

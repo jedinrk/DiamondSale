@@ -20,7 +20,9 @@ import com.logiticks.diamondsale.rest.model.MerchantModelClass;
 import com.logiticks.diamondsale.rest.model.OrderModelClass;
 import com.logiticks.diamondsale.rest.model.PlaceOrderModelClass;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import retrofit2.Call;
@@ -46,6 +48,8 @@ public class CreateInvoiceActivity extends AppCompatActivity {
 
     boolean customerLoaded = false;
     boolean productLoaded = false;
+
+    int orderId;
 
     EditText price;
     @Override
@@ -144,6 +148,25 @@ public class CreateInvoiceActivity extends AppCompatActivity {
             }
         });
 
+        Call<List<PlaceOrderModelClass>> getOrderList= getRestClient().getApiService().getInvoices();
+
+        getOrderList.enqueue(new Callback<List<PlaceOrderModelClass>>() {
+            @Override
+            public void onResponse(Call<List<PlaceOrderModelClass>> call, Response<List<PlaceOrderModelClass>> response) {
+                orderId =0;
+                for(PlaceOrderModelClass c : response.body()){
+                    if(Integer.parseInt(c.getOrderId())>orderId){
+                        orderId = Integer.parseInt(c.getOrderId());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<PlaceOrderModelClass>> call, Throwable t) {
+
+            }
+        });
+
 
         spinnerProduct = (Spinner) findViewById(R.id.spinnerProduct);
 
@@ -164,11 +187,15 @@ public class CreateInvoiceActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 //invoice.set$class("com.logiticks.diamond.lifecycle.merchant.PlaceOrder");
-                invoice.setOrderId(String.valueOf((int)(Math.random()*((1001)))));
+                invoice.setOrderId(String.valueOf(orderId+1));
                 invoice.setAmount(Double.parseDouble(price.getText().toString()));
                 invoice.setBuyer(customer);
                 invoice.setDiamond(diamond);
                 invoice.setMerchant(merchant);
+                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
+                Date date = new Date();
+                date.getTime();
+                invoice.setTimestamp(format.format(date));
                 //invoice.setOrderStatus("PLACED");
 
                 Call<PlaceOrderModelClass> createInvoice = getRestClient().getApiService().createInvoice(invoice);

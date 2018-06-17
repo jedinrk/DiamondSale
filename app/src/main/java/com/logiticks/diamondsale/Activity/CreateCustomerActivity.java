@@ -13,6 +13,7 @@ import android.widget.EditText;
 import com.logiticks.diamondsale.R;
 import com.logiticks.diamondsale.rest.model.CustomerModelClass;
 
+import java.util.List;
 import java.util.Random;
 
 import retrofit2.Call;
@@ -30,6 +31,8 @@ public class CreateCustomerActivity extends AppCompatActivity {
     EditText customerName,customerEmail,customerPhone,customerAddress;
 
     CustomerModelClass customer;
+
+    int custId;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +47,25 @@ public class CreateCustomerActivity extends AppCompatActivity {
         customerPhone = (EditText) findViewById(R.id.editTextCustomerPhone);
         customerAddress = (EditText) findViewById(R.id.editTextCustomerAddress);
 
+        Call<List<CustomerModelClass>> getCustomerList= getRestClient().getApiService().getCustomer();
+
+        getCustomerList.enqueue(new Callback<List<CustomerModelClass>>() {
+            @Override
+            public void onResponse(Call<List<CustomerModelClass>> call, Response<List<CustomerModelClass>> response) {
+                custId =0;
+                for(CustomerModelClass c : response.body()){
+                    if(Integer.parseInt(c.getCustomerId().substring(1))>custId){
+                        custId = Integer.parseInt(c.getCustomerId().substring(1));
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<CustomerModelClass>> call, Throwable t) {
+
+            }
+        });
+
         customer = new CustomerModelClass();
 
         Button buttonSave = (Button) findViewById(R.id.buttonSave);
@@ -51,7 +73,7 @@ public class CreateCustomerActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 customer.set$class("com.logiticks.diamond.lifecycle.merchant.Customer");
-                customer.setCustomerId("c"+String.valueOf((int)(Math.random()*((1001)))));
+                customer.setCustomerId("c"+ String.valueOf(custId+1));
                 customer.setName(customerName.getText().toString());
                 customer.setEmail(customerEmail.getText().toString());
                 customer.setPhone(customerPhone.getText().toString());

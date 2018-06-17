@@ -69,17 +69,7 @@ public class CreateDiamondActivity extends AppCompatActivity {
         clarityAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerClarity.setAdapter(clarityAdapter);
 
-        /*spinnerClarity.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });*/
 
         spinnerColor = (Spinner) findViewById(R.id.spinnerColor);
         ArrayAdapter<String> colorAdapter = new ArrayAdapter<String>(this,
@@ -92,6 +82,25 @@ public class CreateDiamondActivity extends AppCompatActivity {
                 android.R.layout.simple_spinner_item, new String[]{"Emerald","Heart","Marquise","Oval","Pear","Princess","Round"});
         cutAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerCut.setAdapter(cutAdapter);
+
+        Call<List<DiamondModelClass>> getDiamondsList= getRestClient().getApiService().getDiamondList();
+
+        getDiamondsList.enqueue(new Callback<List<DiamondModelClass>>() {
+            @Override
+            public void onResponse(Call<List<DiamondModelClass>> call, Response<List<DiamondModelClass>> response) {
+                int diamondId = 0;
+                for(DiamondModelClass d: response.body()){
+                    if(Integer.parseInt(d.getProductID().substring(1))>diamondId){
+                        diamondId=Integer.parseInt(d.getProductID().substring(1));
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<DiamondModelClass>> call, Throwable t) {
+
+            }
+        });
 
         Button btn = findViewById(R.id.buttonSave);
         btn.setOnClickListener(new View.OnClickListener() {

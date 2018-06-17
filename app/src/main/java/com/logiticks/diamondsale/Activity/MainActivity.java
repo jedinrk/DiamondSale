@@ -154,8 +154,10 @@ public class MainActivity extends AppCompatActivity
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode==0){
             loadHomeFragment(FragmentDiamonds.newInstance(),"fragDiamonds");
-        }else {
+        }else if(requestCode ==1) {
             loadHomeFragment(FragmentCustomer.newInstance(),"fragCustomer");
+        }else {
+            loadHomeFragment(FragmentInvoices.newInstance(),"fragInvoice");
         }
 
     }

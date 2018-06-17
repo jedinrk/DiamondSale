@@ -9,34 +9,26 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="4dp"
-        android:weightSum="5">
+        android:padding="4dp">
+
+        <TextView
+            android:id="@+id/invoiceId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Invoice Id"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_weight="1"/>
 
         <TextView
             android:id="@+id/productId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="ProductId"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:layout_weight="1"/>
-
-        <TextView
-            android:id="@+id/carat"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Carat/Weight"
+            android:text="Product Id"
             android:gravity="center"
             android:textStyle="bold"
             android:layout_weight="1"/>
 
-        <TextView
-            android:id="@+id/cut"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Cut"
-            android:textStyle="bold"
-            android:layout_weight="1"/>
 
         <TextView
             android:id="@+id/customer"
