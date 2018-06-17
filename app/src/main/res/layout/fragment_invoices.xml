@@ -4,62 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        android:id="@+id/header"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="4dp">
 
-        <TextView
-            android:id="@+id/invoiceId"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Invoice Id"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:layout_weight="1"/>
-
-        <TextView
-            android:id="@+id/productId"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Product Id"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:layout_weight="1"/>
-
-
-        <TextView
-            android:id="@+id/customer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Customer"
-            android:textStyle="bold"
-            android:layout_weight="1"/>
-
-        <TextView
-            android:id="@+id/price"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Price"
-            android:textStyle="bold"
-            android:layout_weight="1"/>
-
-    </LinearLayout>
-
-    <View
-        android:id="@+id/view"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_below="@id/header"
-        android:background="#000000"/>
 
     <RelativeLayout
         android:id="@+id/progressBar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/view"
         android:visibility="visible">
 
         <ProgressBar
@@ -73,7 +23,7 @@
         android:id="@+id/invoiceList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/view"/>
+        android:divider="@null"/>
 
 
 

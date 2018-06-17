@@ -10,5 +10,6 @@
     <string name="address">Address</string>
     <string name="email">Email</string>
     <string name="Phone">Phone</string>
+    <string name="sale_price">Sale Price</string>
 
 </resources>

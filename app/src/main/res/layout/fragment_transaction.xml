@@ -4,41 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        android:id="@+id/header"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Date,Time"
-            android:textStyle="bold"
-            android:layout_weight="1"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Entry Type"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:layout_weight="1"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Participant"
-            android:gravity="end"
-            android:textStyle="bold"
-            android:layout_weight="1"/>
-    </LinearLayout>
-
     <RelativeLayout
         android:id="@+id/progressBar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/view"
         android:visibility="visible">
 
         <ProgressBar
@@ -52,7 +21,7 @@
         android:id="@+id/transactionList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/header"/>
+        android:divider="@null"/>
 
 
 

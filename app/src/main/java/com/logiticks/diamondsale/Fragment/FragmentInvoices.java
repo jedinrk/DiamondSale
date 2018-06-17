@@ -149,8 +149,8 @@ public class FragmentInvoices extends Fragment {
                 v = LayoutInflater.from(ctx).inflate(R.layout.invoice_list_item, null);
 
 
-                TextView productId = v.findViewById(R.id.productId);
-                productId.setText(mInvoiceList.get(i).getDiamond().substring(46));
+               /* TextView productId = v.findViewById(R.id.productId);
+                productId.setText(mInvoiceList.get(i).getDiamond().substring(46));*/
 
                 TextView invoiceId = v.findViewById(R.id.invoiceId);
                 invoiceId.setText(mInvoiceList.get(i).getOrderId());

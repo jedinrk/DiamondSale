@@ -1,14 +1,17 @@
 package com.logiticks.diamondsale.Activity;
 
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -22,8 +25,10 @@ import com.logiticks.diamondsale.rest.model.PlaceOrderModelClass;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -42,13 +47,16 @@ public class CreateInvoiceActivity extends AppCompatActivity {
     CustomerModelClass customer;
     MerchantModelClass merchant;
 
-    TextView date;
+    TextView textViewDate;
+    CardView cardViewDate;
     Spinner spinnerCustomer;
     Spinner spinnerProduct;
 
     boolean customerLoaded = false;
     boolean productLoaded = false;
 
+    Calendar myCalendar = Calendar.getInstance();
+    DatePickerDialog.OnDateSetListener date;
     int orderId;
 
     EditText price;
@@ -56,6 +64,33 @@ public class CreateInvoiceActivity extends AppCompatActivity {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_invoice);
+
+        cardViewDate = (CardView) findViewById(R.id.cardViewDate);
+        textViewDate = (TextView) findViewById(R.id.textViewDate);
+
+
+        date = new DatePickerDialog.OnDateSetListener() {
+
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear,
+                                  int dayOfMonth) {
+                // TODO Auto-generated method stub
+                myCalendar.set(Calendar.YEAR, year);
+                myCalendar.set(Calendar.MONTH, monthOfYear);
+                myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                updateLabel();
+            }
+
+        };
+
+        cardViewDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new DatePickerDialog(CreateInvoiceActivity.this, date, myCalendar
+                        .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
 
         price = (EditText) findViewById(R.id.editTextAmount);
 
@@ -216,5 +251,12 @@ public class CreateInvoiceActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void updateLabel() {
+        String myFormat = "MM/dd/yy"; //In which you need put here
+        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+
+        textViewDate.setText(sdf.format(myCalendar.getTime()));
     }
 }
