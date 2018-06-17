@@ -3,9 +3,11 @@ package com.logiticks.diamondsale.Activity;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -49,6 +51,7 @@ public class CreateDiamondActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
         final DiamondModelClass diamond = new DiamondModelClass();
@@ -126,16 +129,6 @@ public class CreateDiamondActivity extends AppCompatActivity {
 
                 diamond.setOwner(null);
 
-                /*LogEntry logEntry = new LogEntry();
-                logEntry.set$class("com.logiticks.diamondsale.dda.DiamondTransferLogEntry");
-                logEntry.setDiamond(new DiamondModelClass());
-                logEntry.setBuyer(new CustomerModelClass());
-                logEntry.setSeller(new CustomerModelClass());
-                logEntry.setTimestamp("2018-06-07T09:47:32.776Z");
-                logEntry.setId("001");
-
-                List<LogEntry> logEntries = new ArrayList<>();
-                logEntries.add(logEntry);*/
                 diamond.setLogEntries(null);
 
                 Call<DiamondModelClass> createDiamond = getRestClient().getApiService().createDiamond(diamond);
@@ -156,5 +149,14 @@ public class CreateDiamondActivity extends AppCompatActivity {
         });
     }
 
-
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 }
