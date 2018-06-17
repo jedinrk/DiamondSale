@@ -4,53 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        android:id="@+id/header"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="4dp"
-        android:weightSum="3">
-
-        <TextView
-            android:id="@+id/customerId"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="ID"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:layout_weight="1"/>
-
-        <TextView
-            android:id="@+id/customerName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Name"
-            android:textStyle="bold"
-            android:layout_weight="1"/>
-
-        <TextView
-            android:id="@+id/customerEmail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Email"
-            android:textStyle="bold"
-            android:layout_weight="1"/>
-
-    </LinearLayout>
-
-    <View
-        android:id="@+id/view"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_below="@id/header"
-        android:background="#000000"/>
 
     <RelativeLayout
         android:id="@+id/progressBar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/view"
         android:visibility="visible">
 
         <ProgressBar
@@ -64,7 +22,7 @@
         android:id="@+id/customerList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/view"/>
+        android:divider="@null"/>
 
 
 
