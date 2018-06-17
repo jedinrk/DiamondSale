@@ -50,6 +50,7 @@ public class CreateDiamondActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
         final DiamondModelClass diamond = new DiamondModelClass();
         final DiamondDetails details = new DiamondDetails();
 
