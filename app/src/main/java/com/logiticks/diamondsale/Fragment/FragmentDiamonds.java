@@ -2,6 +2,9 @@ package com.logiticks.diamondsale.Fragment;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.graphics.ColorFilter;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -125,8 +128,13 @@ public class FragmentDiamonds extends Fragment {
                 TextView cut = v.findViewById(R.id.cut);
                 cut.setText(mDiamondList.get(i).getDiamondDetails().getCut());
 
+                Drawable drawable = getResources().getDrawable(R.drawable.diamon_color_bg);
+                drawable.setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.MULTIPLY);
+
+                color.setBackgroundDrawable(drawable);
+
                 TextView price = v.findViewById(R.id.price);
-                price.setText("$40");
+                price.setText("$ 40");
             }
 
             return v;
