@@ -6,5 +6,9 @@
     <string name="create_customer">Create Customer</string>
     <string name="create_diamond">Create Diamond</string>
     <string name="product_id">Product Id</string>
+    <string name="name">Name</string>
+    <string name="address">Address</string>
+    <string name="email">Email</string>
+    <string name="Phone">Phone</string>
 
 </resources>

@@ -35,8 +35,18 @@
 
         <activity android:name=".Activity.CreateCustomerActivity"
             android:label="@string/create_customer"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".Activity.CreateInvoiceActivity" />
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activity.MainActivity" />
+        </activity>
+
+        <activity android:name=".Activity.CreateInvoiceActivity" >
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activity.MainActivity" />
+        </activity>
 
     </application>
 
