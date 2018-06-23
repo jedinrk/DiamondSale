@@ -21,6 +21,9 @@ public class DiamondModelClass {
     @SerializedName("diamondDetails")
     @Expose
     private DiamondDetails diamondDetails;
+    @SerializedName("merchant")
+    @Expose
+    private MerchantModelClass merchant;
     @SerializedName("owner")
     @Expose
     private CustomerModelClass owner;
@@ -58,6 +61,14 @@ public class DiamondModelClass {
 
     public void setOwner(CustomerModelClass owner) {
         this.owner = owner;
+    }
+
+    public MerchantModelClass getMerchant() {
+        return merchant;
+    }
+
+    public void setMerchant(MerchantModelClass merchant) {
+        this.merchant = merchant;
     }
 
     public List<LogEntry> getLogEntries() {

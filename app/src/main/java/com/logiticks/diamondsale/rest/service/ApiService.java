@@ -3,7 +3,6 @@ package com.logiticks.diamondsale.rest.service;
 import com.logiticks.diamondsale.rest.model.CustomerModelClass;
 import com.logiticks.diamondsale.rest.model.DiamondModelClass;
 import com.logiticks.diamondsale.rest.model.MerchantModelClass;
-import com.logiticks.diamondsale.rest.model.OrderModelClass;
 import com.logiticks.diamondsale.rest.model.PlaceOrderModelClass;
 import com.logiticks.diamondsale.rest.model.TransactionModelClass;
 
@@ -11,8 +10,10 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.Field;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 
 /**
@@ -41,6 +42,10 @@ public interface ApiService {
 
     @GET("/api/Merchant")
     Call<List<MerchantModelClass>> getMerchants();
+
+    @GET("/api/Merchant/{id}")
+    Call<MerchantModelClass> getMerchantById(@Path("id") String id);
+
 
     @GET("/api/system/historian")
     Call<List<TransactionModelClass>> getTransactions();
