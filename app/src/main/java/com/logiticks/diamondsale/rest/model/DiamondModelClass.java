@@ -23,10 +23,10 @@ public class DiamondModelClass {
     private DiamondDetails diamondDetails;
     @SerializedName("merchant")
     @Expose
-    private MerchantModelClass merchant;
+    private String merchant;
     @SerializedName("owner")
     @Expose
-    private CustomerModelClass owner;
+    private String owner;
     @SerializedName("logEntries")
     @Expose
     private List<LogEntry> logEntries = null;
@@ -55,20 +55,20 @@ public class DiamondModelClass {
         this.diamondDetails = diamondDetails;
     }
 
-    public CustomerModelClass getOwner() {
+    public String getOwner() {
         return owner;
     }
 
-    public void setOwner(CustomerModelClass owner) {
+    public void setOwner(String owner) {
         this.owner = owner;
     }
 
-    public MerchantModelClass getMerchant() {
+    public String getMerchant() {
         return merchant;
     }
 
-    public void setMerchant(MerchantModelClass merchant) {
-        this.merchant = merchant;
+    public void setMerchant(String merchant) {
+        this.merchant = "resource:com.logiticks.diamond.lifecycle.merchant.Merchant#"+merchant;
     }
 
     public List<LogEntry> getLogEntries() {

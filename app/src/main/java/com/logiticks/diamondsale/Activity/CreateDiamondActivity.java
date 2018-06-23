@@ -1,5 +1,7 @@
 package com.logiticks.diamondsale.Activity;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
@@ -20,6 +22,7 @@ import com.logiticks.diamondsale.rest.model.CustomerModelClass;
 import com.logiticks.diamondsale.rest.model.DiamondDetails;
 import com.logiticks.diamondsale.rest.model.DiamondModelClass;
 import com.logiticks.diamondsale.rest.model.LogEntry;
+import com.logiticks.diamondsale.rest.model.MerchantModelClass;
 
 import java.security.acl.Owner;
 import java.util.ArrayList;
@@ -126,6 +129,9 @@ public class CreateDiamondActivity extends AppCompatActivity {
                 String cut = spinnerCut.getItemAtPosition(spinnerColor.getSelectedItemPosition()).toString();
                 details.setCut(cut);
                 diamond.setDiamondDetails(details);
+
+                SharedPreferences pref = getSharedPreferences("LOGIN_STATUS", Context.MODE_PRIVATE);
+                diamond.setMerchant(pref.getString("merchantId",null));
 
                 diamond.setOwner(null);
 
